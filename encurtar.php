@@ -8,7 +8,7 @@ $dotenv->load();
 $response = $_POST['g-recaptcha-response'];
 $remoteip = $_SERVER['REMOTE_ADDR'];
 
-$verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$ENV_['SECRET_CAPTCHA']."&response=$response&remoteip=$remoteip");
+$verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$_ENV['SECRET_CAPTCHA']."&response=$response&remoteip=$remoteip");
 $captcha_success = json_decode($verify);
 
 if ($captcha_success->success) {
