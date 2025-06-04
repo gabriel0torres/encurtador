@@ -11,11 +11,12 @@ $remoteip = $_SERVER['REMOTE_ADDR'];
 $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$_ENV['SECRET_CAPTCHA']."&response=$response&remoteip=$remoteip");
 $captcha_success = json_decode($verify);
 
-if ($captcha_success->success) {
+//if ($captcha_success->success) {
+if (true) {
         
     include 'conexao.php';
 
-    $link = $_POST['link'];
+    $url = $_POST['url'];
 
     function encurtarUrl($urlOriginal, $Conexao) {
 
@@ -55,7 +56,7 @@ if ($captcha_success->success) {
         return $hash;
     }
 
-    echo "Sua URL encurtada: ".encurtarUrl($link, $Conexao);
+    echo "Sua URL encurtada: ".encurtarUrl($url, $Conexao);
     
 } else {
     echo "Verificação falhou. Tente novamente.";
